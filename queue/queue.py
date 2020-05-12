@@ -47,7 +47,7 @@ class Queue:
 
     def dequeue(self):
         if len(self.storage) > 0:
-            return self.storage.remove_from_tail()
+            return self.storage.remove_from_head()
 
 
 q = Queue()
@@ -56,5 +56,6 @@ q.enqueue(1)
 q.enqueue(2)
 q.enqueue(3)
 
-q.dequeue()
-
+print(q.dequeue())
+print(q.dequeue())
+print(q.dequeue())

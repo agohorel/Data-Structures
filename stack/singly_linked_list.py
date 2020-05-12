@@ -5,6 +5,9 @@ class Node:
 
     def __str__(self):
         return f"{self.value}"
+    
+    def __repr__(self):
+        return f"{self.value}"
 
     def get_value(self):
         return self.value
@@ -64,30 +67,17 @@ class LinkedList:
             return prev_head
 
     def remove_from_tail(self):
-        if not self.head:
+        if self.head == None:
             return None
+        elif self.head.get_next() == None:
+            temp = self.head
+            self.head = None
+            return temp
         else:
             current = self.head
             prev = current
-            # .next is None for the last item!
             while current.get_next() != None:
                 prev = current
                 current = current.get_next()
-                print("----", prev, current)
             prev.set_next(None)
-
             return current.value
-
-
-ll = LinkedList()
-ll.add_to_tail(1)
-ll.add_to_tail(2)
-ll.add_to_tail(3)
-
-ll.display()
-
-print(ll.remove_from_tail())
-print(ll.remove_from_tail())
-print(ll.remove_from_tail())
-
-ll.display()

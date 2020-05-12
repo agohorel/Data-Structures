@@ -34,6 +34,14 @@ class LinkedList:
                 count += 1
             return count
 
+    def display(self):
+        arr = []
+        current = self.head
+        while current != None:
+            arr.append(current.value)
+            current = current.get_next()
+        print(arr)
+
     def add_to_tail(self, value):
         new_node = Node(value)
 
@@ -67,14 +75,17 @@ class LinkedList:
             return prev_head
 
     def remove_from_tail(self):
-        if not self.head:
+        if self.head == None:
             return None
+        elif self.head.get_next() == None:
+            temp = self.head
+            self.head = None
+            return temp
         else:
             current = self.head
             prev = current
             while current.get_next() != None:
                 prev = current
                 current = current.get_next()
-                print(prev, current)
             prev.set_next(None)
             return current.value

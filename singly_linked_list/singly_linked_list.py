@@ -56,9 +56,13 @@ class LinkedList:
             return prev_head
 
     def remove_from_tail(self):
-        if not self.head:
+        if self.head == None:
             return None
-        else: 
+        elif self.head.get_next() == None:
+            temp = self.head
+            self.head = None
+            return temp
+        else:
             current = self.head
             prev = current
             while current.get_next() != None:
