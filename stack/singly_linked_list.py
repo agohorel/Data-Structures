@@ -72,10 +72,10 @@ class LinkedList:
         elif self.head.get_next() == None:
             temp = self.head
             self.head = None
-            return temp
+            return temp.value
         else:
             current = self.head
-            prev = current
+            prev = None
             while current.get_next() != None:
                 prev = current
                 current = current.get_next()

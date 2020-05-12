@@ -42,20 +42,20 @@ class LinkedList:
             current = current.get_next()
         print(arr)
 
+    # def add_to_tail(self, value):
+    #     new_node = Node(value)
+
+    #     if not self.head:
+    #         self.head = new_node
+    #     else:
+    #         current = self.head
+
+    #         while current.get_next() != None:
+    #             current = current.get_next()
+
+    #         current.set_next(new_node)
+
     def add_to_tail(self, value):
-        new_node = Node(value)
-
-        if not self.head:
-            self.head = new_node
-        else:
-            current = self.head
-
-            while current.get_next() != None:
-                current = current.get_next()
-
-            current.set_next(new_node)
-
-    def add_to_head(self, value):
         new_node = Node(value)
 
         if not self.head:
@@ -80,7 +80,7 @@ class LinkedList:
         elif self.head.get_next() == None:
             temp = self.head
             self.head = None
-            return temp
+            return temp.value
         else:
             current = self.head
             prev = current

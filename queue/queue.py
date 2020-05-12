@@ -43,7 +43,7 @@ class Queue:
         return len(self.storage)
 
     def enqueue(self, value):
-        self.storage.add_to_head(value)
+        self.storage.add_to_tail(value)
 
     def dequeue(self):
         if len(self.storage) > 0:
