@@ -58,14 +58,12 @@ class BSTNode:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
+        # run callback on each iteration
         fn(self.value)
-        if self.right == None:
-            pass
-        elif self.right:
+        # if there's somewhere to travel right, recurse right
+        if self.right:
             self.right.for_each(fn)
-        if self.left == None:
-            pass
-        elif self.left:
+        if self.left:
             self.left.for_each(fn)
 
     # Part 2 -----------------------
