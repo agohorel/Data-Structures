@@ -15,6 +15,9 @@ class BSTNode:
         self.left = None
         self.right = None
 
+    def __str__(self):
+        return f"{self.value}"
+
     # Insert the given value into the tree
     def insert(self, value):
         if value < self.value:
@@ -76,12 +79,31 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+        q = Queue()
+        q.enqueue(node)
+        while len(q.storage) > 0:
+            # pop off last item & save ref
+            current = q.dequeue()
+            print(current)
+            # is there a left node? if so recurse left
+            if current.left:
+                q.enqueue(current.left)
+            # is there a right node? if so recurse right
+            if current.right:
+                q.enqueue(current.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        s = Stack()
+        s.push(node)
+        while len(s.storage) > 0:
+            current = s.pop()
+            print(current)
+            if current.left:
+                s.push(current.left)
+            if current.right:
+                s.push(current.right)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
@@ -93,3 +115,36 @@ class BSTNode:
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
         pass
+
+
+class Queue:
+    def __init__(self):
+        self.storage = list()
+
+    def enqueue(self, value):
+        self.storage.insert(0, value)
+
+    def dequeue(self):
+        if len(self.storage) > 0:
+            return self.storage.pop()
+
+
+class Stack:
+    def __init__(self):
+        self.storage = list()
+
+    def push(self, value):
+        self.storage.append(value)
+
+    def pop(self):
+        if len(self.storage) > 0:
+            return self.storage.pop()
+
+bst = BSTNode(1)
+bst.insert(8)
+bst.insert(5)
+bst.insert(7)
+bst.insert(6)
+bst.insert(3)
+bst.insert(4)
+bst.insert(2)
