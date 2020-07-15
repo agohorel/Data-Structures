@@ -4,8 +4,11 @@ class Node:
         self.next = next_node
 
     def __str__(self):
-        return f"{self.value}, {self.next}"
+        return f"{self.value}"
     
+    def __repr__(self):
+        return f"{self.value}"
+
     def get_value(self):
         return self.value
 
@@ -26,13 +29,21 @@ class LinkedList:
     def __len__(self):
         if not self.head:
             return 0
-        else: 
+        else:
             current = self.head
             count = 0
             while current != None:
                 current = current.get_next()
                 count += 1
             return count
+
+    def display(self):
+        arr = []
+        current = self.head
+        while current != None:
+            arr.append(current.value)
+            current = current.get_next()
+        print(arr)
 
     def add_to_tail(self, value):
         new_node = Node(value)
@@ -44,9 +55,9 @@ class LinkedList:
 
             while current.get_next() != None:
                 current = current.get_next()
-            
+
             current.set_next(new_node)
-    
+
     def remove_from_head(self):
         if not self.head:
             return None
@@ -61,22 +72,12 @@ class LinkedList:
         elif self.head.get_next() == None:
             temp = self.head
             self.head = None
-            return temp
+            return temp.value
         else:
             current = self.head
-            prev = current
+            prev = None
             while current.get_next() != None:
                 prev = current
                 current = current.get_next()
             prev.set_next(None)
             return current.value
-
-
-ll = LinkedList()
-print(len(ll))
-
-ll.add_to_tail(1)
-print(len(ll))
-ll.add_to_tail(2)
-ll.add_to_tail(3)
-
